@@ -51,12 +51,35 @@ startButton.addEventListener("click", startQuiz);
 // make displayQuestion function with for loop to loop through questions
 var index = 0; 
 // after user clicks answer do index ++ and run displayQuestion function again
-var displayQuestion = function(){
+var displayQuestreffr4on = function(){
+
+  // for (var i = 0; i < questions.length; i++) {
+  //   var userAnswer = confirm(questions[index].questionChoices);
+  
+  //   if (
+  //     (userAnswer === true && questions[i].a === "t") ||
+  //     (userAnswer === false && questions[i].a === "f")
+  //   ) {
+  //     score++;
+  //     alert("correct");
+  //   } else {
+  //     alert("nope!");
+  //   }
+  // }
     // the point of this function is to display the current question
     questionText.textContent = questions[index].questionText;
 
     // get possible answers to apper
+    // possibleAnswers.textContent = questions[index].questionChoices;
+    // possibleAnswers.classList.add("hide");
     // "for each" of the poss answers, create a button and make textContent the possible answers
+    questions[index].questionChoices.forEach(function (item) {
+      var btn = document.createElement("button");
+      btn.textContent = item;
+      possibleAnswers.append(btn);
+    // Create buttons here for possibleanswers or hard code?
+    checkAnswer();
+});
 }
 
 var startTimer = function(){
@@ -65,6 +88,13 @@ var startTimer = function(){
 
 var checkAnswer = function(){
     // when click from event listener, call function. This will check IF( answer matches the questionAnswer,)
+    // possibleAnswers.addEventListener("click", function()){
+    //   if(possibleAnswers === questionAnswer);
+    //   alert("GOOD JOB!!!");
+    //   score++;
+    // } else {
+
+    // }
     // then got it right. add to score and go to next question
     // else(doc 10 seconds of the clock and then go to next question)
 }
