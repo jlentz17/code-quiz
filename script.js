@@ -6,52 +6,75 @@ var questionText = document.querySelector("#questionText");
 var beginQuiz = document.querySelector("#beginQuiz");
 var possibleAnswers = document.querySelector("#possibleAnswers");
 
+var index = 0;
+// Create a variable to keep track of the score
+var score = 0;
+var timerInterval;
 var questions = [
 
-    {questionText: "What color is the sky?", 
+    {questionTitle: "What year is it???", 
+    questionChoices: ["1927", "2055", "It was brand new!", "orange"], 
+    questionAnswer: "It was brand new!"},
+
+    {questionTitle: "?", 
     questionChoices: ["blue", "green", "purple", "orange"], 
     questionAnswer: "blue"},
 
-    {questionText: "What color is the sky?", 
+    {questionTitle: "What color is the sky?", 
     questionChoices: ["blue", "green", "purple", "orange"], 
     questionAnswer: "blue"},
 
-    {questionText: "What color is the sky?", 
+    {questionTitle: "What color is the sky?", 
     questionChoices: ["blue", "green", "purple", "orange"], 
     questionAnswer: "blue"},
 
-    {questionText: "What color is the sky?", 
-    questionChoices: ["blue", "green", "purple", "orange"], 
-    questionAnswer: "blue"},
-
-    {questionText: "What color is the sky?", 
+    {questionTitle: "What color is the sky?", 
     questionChoices: ["blue", "green", "purple", "orange"], 
     questionAnswer: "blue"}
 ];
-// Create a variable to keep track of the score
-var score = 0;
 
 startButton.addEventListener("click", startQuiz);
+
+function startQuiz(){
+  // make beginQuiz invisible
+  beginQuiz.classList.add("hide");
+    // when start quiz call timer start function
+    // make beginQuiz invisible
+  questionContainer.classList.remove("hide");
+    // call displayQuestion function here
+    displayQuestion();
+}
 
 
 // Iterate over the questions array and display each question in a confirm
 // for (var i = 0; i < questions.length; i++) {
-//     var userAnswer = questions[i].questionText;
+//     var userAnswer = questions[index].questionText;
   
 //     if 
-//       (userAnswer && questions[i].questionAnswer){
+//       (userAnswer && questions[index].questionAnswer){
 //       score++;
 //       alert("correct");
 //     } else {
 //       alert("nope!");
 //     }
 
-
+function nextQuestion(){
+  var currentQuestion = questions[index];
+  var answersEl = document.getElementById("possibleAnswers");
+  answersEl.innerHTML = "";
+  questionText.innerText = currentQuestion.questionTitle;
+  currentQuestion.questionAnswer.forEach(function (item, i) {
+    var btn = document.createElement("button");
+    btn.textContent = item;
+    possibleAnswers.append(btn);
+});
+}
+nextQuestion();
 
 // make displayQuestion function with for loop to loop through questions
-var index = 0; 
+
 // after user clicks answer do index ++ and run displayQuestion function again
-var displayQuestreffr4on = function(){
+var displayQuestion = function(){
 
   // for (var i = 0; i < questions.length; i++) {
   //   var userAnswer = confirm(questions[index].questionChoices);
@@ -67,7 +90,7 @@ var displayQuestreffr4on = function(){
   //   }
   // }
     // the point of this function is to display the current question
-    questionText.textContent = questions[index].questionText;
+    questionText.textContent = questions[index].questionTitle;
 
     // get possible answers to apper
     // possibleAnswers.textContent = questions[index].questionChoices;
@@ -83,7 +106,10 @@ var displayQuestreffr4on = function(){
 }
 
 var startTimer = function(){
-    // countdown time and display time on page
+  // countdown time and display time on page
+  timerInterval = setInterval(function() {
+    
+  }
 }
 
 var checkAnswer = function(){
@@ -97,14 +123,4 @@ var checkAnswer = function(){
     // }
     // then got it right. add to score and go to next question
     // else(doc 10 seconds of the clock and then go to next question)
-}
-
-function startQuiz(){
-  // make beginQuiz invisible
-  beginQuiz.classList.add("hide");
-    // when start quiz call timer start function
-    // make beginQuiz invisible
-  questionContainer.classList.remove("hide");
-    // call displayQuestion function here
-    displayQuestion();
 }
