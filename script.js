@@ -17,9 +17,9 @@ var questions = [
     questionChoices: ["1927", "2055", "It was brand new!", "orange"], 
     questionAnswer: "It was brand new!"},
 
-    {questionTitle: "?", 
-    questionChoices: ["blue", "green", "purple", "orange"], 
-    questionAnswer: "blue"},
+    {questionTitle: "Is Javascript fun?", 
+    questionChoices: ["yes", "green", "maybe", "eh"], 
+    questionAnswer: "eh"},
 
     {questionTitle: "????", 
     questionChoices: ["blue", "green", "purple", "orange"], 
@@ -44,6 +44,7 @@ function startQuiz(){
   questionContainer.classList.remove("hide");
     // call displayQuestion function here
 nextQuestion()
+startTimer();
 }
 
 
@@ -63,7 +64,8 @@ possibleAnswers.addEventListener("click", function(event){
     console.log(event.target.textContent);
     if (event.target.textContent === questions[index].questionAnswer){
         score++;
-        console.log(score);
+        document.querySelector("#score").textContent = "score: " + score;
+
         // figure out how to print score with DOM manip. make new div id= score, then queryselect!
         index++;
         console.log(index);
@@ -73,12 +75,22 @@ possibleAnswers.addEventListener("click", function(event){
         score --;
         timeLeft -= 10;
         console.log(timeLeft);
+        document.querySelector("#score").textContent = "score: " + score;
     }
+    
+
     
 
 }
 );
 
+function endQuiz() {
+  var input = document.
+}
+// when end of game make input box so they can store their name w/ enter button
+
+// cleartimer
+// hide gameboard
 
 // make displayQuestion function with for loop to loop through questions
 
