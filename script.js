@@ -49,6 +49,9 @@ startTimer();
 
 
 function nextQuestion(){
+  if (index === questions.length){
+    return endQuiz();
+  }
 //   var currentQuestion = questions[index];
   possibleAnswers.innerHTML = "";
   questionText.innerText = questions[index].questionTitle;
@@ -83,10 +86,27 @@ possibleAnswers.addEventListener("click", function(event){
 
 }
 );
+var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
 
 function endQuiz() {
-  var input = document.
+  document.querySelector("#formDiv").classList.remove("hide");
+  var submit= document.querySelector("#submitButton");
+  submit.addEventListener("click", function(){
+    var userName = document.querySelector(".storeInfo").value;
+  var objectToSave = {
+    name : userName,
+    score: score
+  }
+  highScores.push(objectToSave);
+  localStorage.setItem("highScores", JSON.stringify(highScores))
+  });
+  
 }
+
+// make an array that stores thier name and score
+// when someone inputs, push to array
+
 // when end of game make input box so they can store their name w/ enter button
 
 // cleartimer
