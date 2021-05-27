@@ -6,6 +6,9 @@ var questionText = document.querySelector("#questionText");
 var beginQuiz = document.querySelector("#beginQuiz");
 var possibleAnswers = document.querySelector("#possibleAnswers");
 var viewScore = document.querySelector("#score");
+var viewHighScores = document.querySelector(".viewHighScores")
+var showScore = document.querySelector(".showScore");
+var hideHighScores = document.querySelector(".hideHighScores");
 
 var index = 0;
 // Create a variable to keep track of the score
@@ -113,7 +116,7 @@ function startTimer() {
     timerInterval = setInterval(function () {
       timeLeft--;
       timerEl.textContent = timeLeft;
-      if (timeLeft === 0) {
+      if (timeLeft <= 0) {
         // End the game
         // Stop the timer
         clearInterval(timerInterval);
@@ -122,3 +125,21 @@ function startTimer() {
     }, 1000);
     return timeLeft;
   }
+  // remove and hide each button
+    viewHighScores.addEventListener("click", function(){
+      var Initials = localStorage.getItem("Initials");
+      var playerScore = localStorage.getItem("playerScore");
+      showScore.classList.remove("hide");
+      showScore.innerHTML = `${Initials} has a high score of ${playerScore}`;
+
+      viewHighScores.classList.add("hide");
+      hideHighScores.classList.remove("hide");
+    });
+
+    hideHighScores.addEventListener("click", function(){
+      hideHighScores.classList.add("hide");
+      showScore.classList.add("hide");
+      viewHighScores.classList.remove("hide");
+      
+    });
+
