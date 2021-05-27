@@ -44,10 +44,9 @@ function startQuiz(){
     // make beginQuiz invisible
   questionContainer.classList.remove("hide");
     // call displayQuestion function here
-nextQuestion()
+nextQuestion();
 startTimer();
 }
-
 
 function nextQuestion(){
   if (index === questions.length){
@@ -60,7 +59,7 @@ function nextQuestion(){
     var btn = document.createElement("button");
     btn.textContent = item;
     possibleAnswers.append(btn);
-});
+})
 }
 
 possibleAnswers.addEventListener("click", function(event){
@@ -78,6 +77,12 @@ possibleAnswers.addEventListener("click", function(event){
 
         nextQuestion();
     } else {
+      if(
+        timeLeft < 0
+      ){
+        alert("game over");
+        endQuiz();
+      }
         timeLeft -= 10;
         console.log(timeLeft);
         viewScore.textContent = score;
