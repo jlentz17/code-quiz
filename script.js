@@ -88,60 +88,21 @@ var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 
 function endQuiz() {
-  document.querySelector("#formDiv").classList.remove("hide");
-  var submit= document.querySelector("#submitButton");
-  submit.addEventListener("click", function(){
-    var userName = document.querySelector(".storeInfo").value;
-  var objectToSave = {
-    name : userName,
-    score: score
-  }
-  highScores.push(objectToSave);
-  localStorage.setItem("highScores", JSON.stringify(highScores))
-  });
-  
+  // make a prompt that asks for init.
+  // make that userinput a variable
+  // then set variable to local storage
+  var userName = prompt("Enter your initials!");
+  localStorage.setItem("Initials", userName);
+
+  localStorage.setItem("playerScore", score);
 }
 
 // make an array that stores thier name and score
 // when someone inputs, push to array
-
-// when end of game make input box so they can store their name w/ enter button
+var playerInfo = [];
 
 // cleartimer
 // hide gameboard
-
-// make displayQuestion function with for loop to loop through questions
-
-// after user clicks answer do index ++ and run displayQuestion function again
-// var displayQuestion = function(){
-
-//   // for (var i = 0; i < questions.length; i++) {
-//   //   var userAnswer = confirm(questions[index].questionChoices);
-  
-//   //   if (
-//   //     (userAnswer === true && questions[i].a === "t") ||
-//   //     (userAnswer === false && questions[i].a === "f")
-//   //   ) {
-//   //     score++;
-//   //     alert("correct");
-//   //   } else {
-//   //     alert("nope!");
-//   //   }
-//   // }
-//     // the point of this function is to display the current question
-//     questionText.textContent = questions[index].questionTitle;
-
-//     // get possible answers to apper
-//     // possibleAnswers.textContent = questions[index].questionChoices;
-//     // possibleAnswers.classList.add("hide");
-//     // "for each" of the poss answers, create a button and make textContent the possible answers
-//     questions[index].questionChoices.forEach(function (item) {
-//       var btn = document.createElement("button");
-//       btn.textContent = item;
-//       possibleAnswers.append(btn);
-//     // Create buttons here for possibleanswers or hard code?
-// });
-// }
 
 function startTimer() {
     timerInterval = setInterval(function () {
