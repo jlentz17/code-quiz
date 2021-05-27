@@ -5,6 +5,7 @@ var timerEl = document.querySelector("#timerEl");
 var questionText = document.querySelector("#questionText");
 var beginQuiz = document.querySelector("#beginQuiz");
 var possibleAnswers = document.querySelector("#possibleAnswers");
+var viewScore = document.querySelector("#score");
 
 var index = 0;
 // Create a variable to keep track of the score
@@ -67,23 +68,20 @@ possibleAnswers.addEventListener("click", function(event){
     console.log(event.target.textContent);
     if (event.target.textContent === questions[index].questionAnswer){
         score++;
-        document.querySelector("#score").textContent = "score: " + score;
+        viewScore.textContent = score;
+
 
         // figure out how to print score with DOM manip. make new div id= score, then queryselect!
+
         index++;
         console.log(index);
 
         nextQuestion();
     } else {
-        score --;
         timeLeft -= 10;
         console.log(timeLeft);
-        document.querySelector("#score").textContent = "score: " + score;
+        viewScore.textContent = score;
     }
-    
-
-    
-
 }
 );
 var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
