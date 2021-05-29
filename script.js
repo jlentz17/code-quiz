@@ -33,7 +33,7 @@ var questions = [
     questionChoices: ["for(i=0, i<question.length, i--)", "for(i====0)", "looooop", "for(i = 0; i<questions.length; i++)"],
     questionAnswer: "for(i = 0; i<questions.length; i++)"
   },       
- 
+  
   {
     questionTitle: "Which of the following type of variable is visible only within a function where it is defined?",
     questionChoices: [["roy", "gee", "biv"], "global variable", "local variable", "var"],
