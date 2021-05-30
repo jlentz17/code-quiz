@@ -33,7 +33,7 @@ var questions = [
     questionChoices: ["for(i=0, i<question.length, i--)", "for(i====0)", "looooop", "for(i = 0; i<questions.length; i++)"],
     questionAnswer: "for(i = 0; i<questions.length; i++)"
   },       
-  
+
   {
     questionTitle: "Which of the following type of variable is visible only within a function where it is defined?",
     questionChoices: [["roy", "gee", "biv"], "global variable", "local variable", "var"],
@@ -76,7 +76,6 @@ function nextQuestion() {
 
 possibleAnswers.addEventListener("click", function (event) {
   // if answer is wrong, exit
-  console.log(event.target.textContent);
   if (event.target.textContent === questions[index].questionAnswer) {
     score++;
     viewScore.textContent = score;
@@ -84,7 +83,6 @@ possibleAnswers.addEventListener("click", function (event) {
     // figure out how to print score with DOM manip. make new div id= score, then queryselect!
 
     index++;
-    console.log(index);
 
     nextQuestion();
   } else {
@@ -93,7 +91,6 @@ possibleAnswers.addEventListener("click", function (event) {
       endQuiz();
     }
     timeLeft -= 10;
-    console.log(timeLeft);
     viewScore.textContent = score;
   }
 });
@@ -107,6 +104,7 @@ function endQuiz() {
   localStorage.setItem("Initials", userName);
 
   localStorage.setItem("playerScore", score);
+  clearInterval(timerInterval);
 }
 
 // make an array that stores thier name and score
