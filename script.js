@@ -94,16 +94,15 @@ possibleAnswers.addEventListener("click", function (event) {
     viewScore.textContent = score;
   }
 });
-var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 function endQuiz() {
   // make a prompt that asks for init.
   // make that userinput a variable
   // then set variable to local storage
   var userName = prompt("Enter your initials!");
-  localStorage.setItem("Initials", userName);
+  localStorage.setItem("Initials", JSON.stringify(userName));
 
-  localStorage.setItem("playerScore", score);
+  localStorage.setItem("playerScore", JSON.stringify(score));
   clearInterval(timerInterval);
 }
 
@@ -129,7 +128,7 @@ function startTimer() {
 }
 // remove and hide each button
 viewHighScores.addEventListener("click", function () {
-  var Initials = localStorage.getItem("Initials");
+  var Initials = JSON.parse(localStorage.getItem("Initials"));
   var playerScore = localStorage.getItem("playerScore");
   showScore.classList.remove("hide");
   showScore.innerHTML = `${Initials} has a high score of ${playerScore}`;

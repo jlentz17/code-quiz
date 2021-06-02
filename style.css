@@ -1,12 +1,16 @@
+* {
+  text-align: center;
+}
+
 .hide {
-    display: none;
+  display: none;
 }
 
 .flex-row {
-    display: flex;
-    margin-top: 10px;
+  display: flex;
+  margin-top: 10px;
 }
 
 #timerEl {
-    margin-left: 5px;
+  margin-left: 5px;
 }
