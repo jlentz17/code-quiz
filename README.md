@@ -5,7 +5,7 @@
 In the fourth week of bootcamp, I was given the assignment of making a code quiz with JavaScript and WEb API's.
 
 
-![Image of Code Quiz](./codeQuizScreenshot.png/)
+![Image of Code Quiz](./codeQuiz.png/)`
 
 # Description 
 
